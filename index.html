@@ -3,49 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BoardBazaar – Rent & Sale Boards Near You</title>
+<title>Reference – Rent &amp; Sale Boards Near You</title>
+<meta name="description" content="Reference turns the To-Let and For-Sale boards you see on the road into a searchable online listing. Noida, Delhi, Gurugram.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="announce">Spotted a "To-Let" board? Upload its photo &amp; help someone find a home. 🏠</div>
+<div class="announce">Spotted a "To-Let" board? Upload its photo and help someone find a home. 🏠</div>
 
 <header class="nav">
-  <a class="logo" href="#" onclick="App.home();return false">Board<b>Bazaar</b></a>
-  <input id="q" class="search" placeholder="Search area, e.g. Sector 44, Laxmi Nagar…" oninput="App.render()">
-  <nav>
+  <a class="logo" href="#/" data-nav>Re<b>fer</b>ence</a>
+  <nav class="menu" id="menu">
+    <a href="#/" data-nav>Home</a>
+    <a href="#/listings" data-nav>Listings</a>
+    <a href="#/about" data-nav>About</a>
+    <a href="#/contact" data-nav>Contact</a>
+  </nav>
+  <div class="actions">
     <button class="link" id="navAdmin" style="display:none" onclick="App.openAdmin()">Admin</button>
     <button class="link" id="navMine" style="display:none" onclick="App.openMine()">My boards</button>
     <button class="link" id="navLogin" onclick="App.openAuth()">Login</button>
     <button class="link" id="navLogout" style="display:none" onclick="App.logout()">Logout</button>
     <button class="btn" onclick="App.openAdd()">+ Upload board</button>
-  </nav>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('on')">☰</button>
+  </div>
 </header>
 
-<section class="hero">
-  <h1>Every board on the road, now online.</h1>
-  <p>Room, flat, dukan or plot – see the board photo, call, done.</p>
-</section>
+<main id="view"></main>
 
-<main class="layout">
-  <aside class="filters">
-    <h3>Filters</h3>
-    <label>City</label>
-    <select id="fCity" onchange="App.render()">
-      <option value="">All cities</option><option>Noida</option><option>Delhi</option><option>Gurugram</option>
-    </select>
-    <label>Type</label>
-    <select id="fType" onchange="App.render()"></select>
-    <button class="btn full" onclick="App.nearMe()">📍 Near me</button>
-    <button class="btn ghost full" onclick="App.clear()">Clear</button>
-  </aside>
-  <section>
-    <div class="count" id="count"></div>
-    <div id="grid" class="grid"></div>
-  </section>
-</main>
+<footer class="footer">
+  <div class="fgrid">
+    <div>
+      <div class="logo" style="color:#fff">Re<b>fer</b>ence</div>
+      <p>Every To-Let and For-Sale board on the road, now searchable online.</p>
+    </div>
+    <div><h4>Explore</h4><a href="#/" data-nav>Home</a><a href="#/listings" data-nav>Listings</a><a href="#/about" data-nav>About</a><a href="#/contact" data-nav>Contact</a></div>
+    <div><h4>Cities</h4><a href="#/listings" onclick="App.goCity('Noida')">Noida</a><a href="#/listings" onclick="App.goCity('Delhi')">Delhi</a><a href="#/listings" onclick="App.goCity('Gurugram')">Gurugram</a></div>
+    <div><h4>Get started</h4><a href="#" onclick="App.openAdd();return false">Upload a board</a><a href="#" onclick="App.openAuth();return false">Login / Sign up</a></div>
+  </div>
+  <div class="copy">© <span id="yr"></span> Reference. Boards are uploaded by users – always verify before paying any money.</div>
+</footer>
 
-<!-- generic modal -->
 <div id="modal" class="modal" onclick="if(event.target===this)App.close()">
   <div class="sheet"><button class="x" onclick="App.close()">×</button><div id="sheet"></div></div>
 </div>
