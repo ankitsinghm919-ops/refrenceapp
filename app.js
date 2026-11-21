@@ -1,5 +1,5 @@
 /* ===== CONFIG: paste your Apps Script Web App URL here ===== */
-const API = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+const API = 'https://script.google.com/macros/s/AKfycbxY5xBN8yfBwDbrlgXZBJ6d1_S9OHvt08hZ5kERP9hZBilrb6QxR6fYSPOyChORTVaPIQ/exec';
 
 const TYPES = ['1 Room Set (Rent)', '2 Room Set (Rent)', 'Flat (Rent)', 'Dukan / Shop (Rent)', 'House / Flat (Sale)', 'Dukan / Plot (Sale)', 'Other'];
 const AREAS = {
