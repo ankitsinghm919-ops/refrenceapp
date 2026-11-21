@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BoardBazaar – Rent & Sale Boards Near You</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="announce">Spotted a "To-Let" board? Upload its photo &amp; help someone find a home. 🏠</div>
+
+<header class="nav">
+  <a class="logo" href="#" onclick="App.home();return false">Board<b>Bazaar</b></a>
+  <input id="q" class="search" placeholder="Search area, e.g. Sector 44, Laxmi Nagar…" oninput="App.render()">
+  <nav>
+    <button class="link" id="navAdmin" style="display:none" onclick="App.openAdmin()">Admin</button>
+    <button class="link" id="navMine" style="display:none" onclick="App.openMine()">My boards</button>
+    <button class="link" id="navLogin" onclick="App.openAuth()">Login</button>
+    <button class="link" id="navLogout" style="display:none" onclick="App.logout()">Logout</button>
+    <button class="btn" onclick="App.openAdd()">+ Upload board</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Every board on the road, now online.</h1>
+  <p>Room, flat, dukan or plot – see the board photo, call, done.</p>
+</section>
+
+<main class="layout">
+  <aside class="filters">
+    <h3>Filters</h3>
+    <label>City</label>
+    <select id="fCity" onchange="App.render()">
+      <option value="">All cities</option><option>Noida</option><option>Delhi</option><option>Gurugram</option>
+    </select>
+    <label>Type</label>
+    <select id="fType" onchange="App.render()"></select>
+    <button class="btn full" onclick="App.nearMe()">📍 Near me</button>
+    <button class="btn ghost full" onclick="App.clear()">Clear</button>
+  </aside>
+  <section>
+    <div class="count" id="count"></div>
+    <div id="grid" class="grid"></div>
+  </section>
+</main>
+
+<!-- generic modal -->
+<div id="modal" class="modal" onclick="if(event.target===this)App.close()">
+  <div class="sheet"><button class="x" onclick="App.close()">×</button><div id="sheet"></div></div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
